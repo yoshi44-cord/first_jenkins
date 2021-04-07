@@ -1,0 +1,18 @@
+version: '2'
+services:
+  gitbucket:
+    image: gitbucket:4.30.0
+    ports:
+      - 8888:8080
+      - 29418:29418
+    volumes:
+      - ./gitbucket/gitbucket-data:/gitbucket
+    restart: always
+
+  jenkins:
+    image: jenkins:lts
+    ports:
+      - '8889:8080'
+      - '5000:5000'
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
